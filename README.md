@@ -30,6 +30,8 @@ A microservices-based automation system for affiliate marketing that:
 - Docker and Docker Compose installed
 - At least 4GB RAM available
 - Optional: Twitter/X, Facebook, TikTok developer accounts for live posting
+- Access the dashboard in a browser: http://localhost:8000/dashboard
+- One site log in http://localhost:6080
 
 ### Setup
 1. Clone this repository (or copy the files to your machine)
@@ -43,6 +45,30 @@ A microservices-based automation system for affiliate marketing that:
 ### Build and Run
 ```bash
 docker-compose up --build
+```
+### API Endpoint (fallback)
+```bash
+POST /docker/start/{containerName}
+POST /docker/stop/{containerName}
+POST /docker/restart/{containerName}
+```
+### Manual Docker
+```Bash
+# Mulai container
+docker start festive_cerf
+docker start thirsty_shirley
+```
+### Delete & Restart
+docker rm -f festive_cerf
+docker rm -f thirsty_shirley
+
+### API server Logs
+```Bash
+   docker logs affiliate-automation-api_server-1
+```
+Endpoint /health terminal host
+```Bash
+   curl http://localhost:8000/health
 ```
 
 ### Services
