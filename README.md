@@ -121,9 +121,9 @@ Between posts: 5-17 minutes randomized to mimic human behavior.
 
 ## GitHub Integration
 All generated content is pushed to:
-- Repository: ayushafira/affiliate-marketplace-automation
-- Author: Ayusha Shafira
-- Token: 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 (provided in task)
+- Repository: xync911/affiliate-marketplace-automation
+- Author: xync911
+- Token: (provided in task)
 
 Content is stored in:
 - `content/` directory for text/captions
