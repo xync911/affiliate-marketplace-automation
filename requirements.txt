@@ -35,6 +35,9 @@ python-json-logger==2.0.7
 python-dotenv==1.0.1
 tenacity==8.5.0
 
+# Docker Management
+docker==7.1.0
+
 # Optional: Trend Detection
 # tweepy==4.14.0
 # facebook-sdk==16.0.0
