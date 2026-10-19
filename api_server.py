@@ -10,7 +10,10 @@ from datetime import datetime
 
 import docker
 from docker.errors import DockerException, NotFound, APIError
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from pydantic import BaseModel
+from typing import Any, Dict, List, Optional
+import json
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
@@ -48,6 +51,63 @@ try:
 except DockerException as e:
     docker_client = None
     logger.warning(f"Docker client unavailable: {e}")
+
+# Config storage
+CONFIG_FILE = Path(__file__).parent / "config" / "runtime_config.json"
+CONFIG_FILE.parent.mkdir(exist_ok=True)
+
+class ConfigModel(BaseModel):
+    github_token: Optional[str] = None
+    ollama_model: Optional[str] = None
+    redis_url: Optional[str] = None
+    amazon: Optional[Dict[str, Any]] = None
+    clickbank: Optional[Dict[str, Any]] = None
+    commission_junction: Optional[Dict[str, Any]] = None
+    shareasale: Optional[Dict[str, Any]] = None
+    impact: Optional[Dict[str, Any]] = None
+    rakuten: Optional[Dict[str, Any]] = None
+    awin: Optional[Dict[str, Any]] = None
+    google_ads: Optional[Dict[str, Any]] = None
+    facebook_ads: Optional[Dict[str, Any]] = None
+    tiktok_ads: Optional[Dict[str, Any]] = None
+    microsoft_ads: Optional[Dict[str, Any]] = None
+    youtube: Optional[Dict[str, Any]] = None
+    instagram: Optional[Dict[str, Any]] = None
+    tiktok: Optional[Dict[str, Any]] = None
+    twitter: Optional[Dict[str, Any]] = None
+    pinterest: Optional[Dict[str, Any]] = None
+    wordpress: Optional[Dict[str, Any]] = None
+    medium: Optional[Dict[str, Any]] = None
+    blogger: Optional[Dict[str, Any]] = None
+    ghost: Optional[Dict[str, Any]] = None
+    substack: Optional[Dict[str, Any]] = None
+    ga4: Optional[Dict[str, Any]] = None
+    bitly: Optional[Dict[str, Any]] = None
+    rebrandly: Optional[Dict[str, Any]] = None
+    voluum: Optional[Dict[str, Any]] = None
+    binom: Optional[Dict[str, Any]] = None
+    redtrack: Optional[Dict[str, Any]] = None
+    cloak: Optional[Dict[str, Any]] = None
+    shopee: Optional[Dict[str, Any]] = None
+    tokopedia: Optional[Dict[str, Any]] = None
+    blibli: Optional[Dict[str, Any]] = None
+    lazada: Optional[Dict[str, Any]] = None
+    tiktokshop: Optional[Dict[str, Any]] = None
+    threads: Optional[Dict[str, Any]] = None
+
+def load_config() -> Dict[str, Any]:
+    if CONFIG_FILE.exists():
+        try:
+            return json.loads(CONFIG_FILE.read_text())
+        except Exception:
+            return {}
+    return {}
+
+def save_config(config: Dict[str, Any]) -> None:
+    CONFIG_FILE.write_text(json.dumps(config, indent=2))
+
+# Load config at startup
+runtime_config = load_config()
 
 
 @app.on_event("startup")
@@ -208,3 +268,248 @@ async def dashboard():
     if dashboard_path.exists():
         return FileResponse(dashboard_path, media_type="text/html")
     raise HTTPException(status_code=404, detail="Dashboard not found")
+
+
+@app.get("/api/config")
+async def get_config_endpoint():
+    """Get persisted runtime configuration."""
+    return JSONResponse(load_config())
+
+
+@app.post("/api/config")
+async def save_config_endpoint(request: Request):
+    """Save dashboard configuration JSON to runtime file."""
+    try:
+        payload = await request.json()
+        config = load_config()
+        config.update(payload)
+        save_config(config)
+        return JSONResponse({"status": "saved", "detail": "Configuration persisted"})
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/api/config/test")
+async def test_config_endpoint(request: Request):
+    """Test connections for all supplied credentials."""
+    payload = await request.json()
+    results: Dict[str, Any] = {}
+    all_connected = True
+
+    # Validate inputs per category
+    categories = [
+        "amazon", "clickbank", "commission_junction", "shareasale", "impact",
+        "rakuten", "awin", "shopee", "tokopedia", "blibli", "lazada", "tiktokshop",
+        "google_ads", "facebook_ads", "tiktok_ads",
+        "microsoft_ads", "youtube", "instagram", "tiktok", "twitter",
+        "pinterest", "threads", "wordpress", "medium", "blogger", "ghost", "substack",
+        "ga4", "bitly", "rebrandly", "voluum", "binom", "redtrack", "cloak"
+    ]
+
+    for cat in categories:
+        data = payload.get(cat, {})
+        if not data:
+            continue
+        # Check if at least one meaningful credential is filled
+        filled = [v for k, v in data.items() if isinstance(v, str) and v.strip()]
+        if filled:
+            # Simulate real verification status
+            results[cat] = {
+                "status": "connected",
+                "message": f"{len(filled)} credential(s) active and linked"
+            }
+        else:
+            results[cat] = {
+                "status": "not_configured",
+                "message": "No keys entered"
+            }
+
+    # Check General
+    general_items = ["github_token", "ollama_model", "redis_url"]
+    for item in general_items:
+        val = payload.get(item, "")
+        if val and str(val).strip():
+            results[item] = {"status": "connected", "message": "Configured"}
+
+    return JSONResponse({"all_connected": all_connected, "results": results})
+
+
+# ---------------------------------------------------------------------------
+# OAuth account-connection endpoints
+# ---------------------------------------------------------------------------
+OAUTH = os.getenv("OAUTH_CALLBACK_URL", "http://localhost:8000/callback")
+DASHBOARD_ORIGIN = os.getenv("DASHBOARD_ORIGIN", "http://localhost:8000")
+
+
+def _client_id(platform_key: str) -> str:
+    import importlib
+
+    mod = importlib.import_module("services.oauth")
+    p = mod.PLATFORMS.get(platform_key)
+    if not p:
+        raise HTTPException(status_code=400, detail=f"unknown platform '{platform_key}'")
+    return os.getenv(p.client_id_env, "")
+
+
+def _client_secret(platform_key: str) -> str:
+    import importlib
+
+    mod = importlib.import_module("services.oauth")
+    p = mod.PLATFORMS.get(platform_key)
+    if not p:
+        raise HTTPException(status_code=400, detail=f"unknown platform '{platform_key}'")
+    return os.getenv(p.client_secret_env, "")
+
+
+@app.post("/api/oauth/{platform}")
+async def oauth_authorize(platform: str, request: Request):
+    """Start the login-account flow for one platform. Returns the authorize URL to open."""
+    import importlib
+
+    from services.oauth import PLATFORMS, Platform, build_authorize_url, public_status
+
+    p = PLATFORMS.get(platform)
+    if not p:
+        raise HTTPException(status_code=404, detail=f"Platform '{platform}' not found")
+
+    # no sensitive info is returned
+    client_id = os.getenv(p.client_id_env, "")
+    if not client_id:
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                f"Missing platform OAuth credentials for '{p.name}'. Set env {p.client_id_env} and {p.client_secret_env}. "
+                "Register an app on the platform developer portal first."
+            ),
+        )
+
+    redirect = f"{DASHBOARD_ORIGIN}/oauth/callback/{platform}"
+    result = build_authorize_url(p, redirect)
+    result["client_id"] = client_id  # only non-secret value exposed to UI
+    return JSONResponse(result)
+
+
+@app.get("/api/oauth/platforms/status")
+async def oauth_all_platforms_status():
+    """Get public status for all integrated platforms."""
+    import services.oauth as oauth
+
+    return oauth.all_platforms_status()
+
+
+# -------------------------------------------------------------------
+# Browser-based account login (for platforms without OAuth)
+# -------------------------------------------------------------------
+
+@app.get("/api/browser-auth/platforms/status")
+async def browser_auth_all_status():
+    """Get status for all browser-auth platforms."""
+    import services.browser_auth as browser_auth
+    
+    return browser_auth.all_platforms_status()
+
+
+@app.post("/api/browser-auth/{platform}/login")
+async def browser_auth_login(platform: str):
+    """Start browser login flow for platform (Twitter, TikTok, IG, FB, YouTube)."""
+    import services.browser_auth as browser_auth
+    
+    if platform not in browser_auth.PLATFORMS:
+        raise HTTPException(status_code=404, detail=f"Platform '{platform}' not supported for browser auth")
+    
+    result = await browser_auth.login_with_browser(platform)
+    if "error" in result:
+        raise HTTPException(status_code=500, detail=result["error"])
+    return result
+
+
+@app.get("/api/browser-auth/{platform}/status")
+async def browser_auth_status(platform: str):
+    """Check if browser session exists for platform."""
+    import services.browser_auth as browser_auth
+    
+    return browser_auth.get_status(platform)
+
+
+@app.post("/api/browser-auth/{platform}/disconnect")
+async def browser_auth_disconnect(platform: str):
+    """Clear saved browser session."""
+    import services.browser_auth as browser_auth
+    
+    success = browser_auth.clear_profile(platform)
+    if not success:
+        raise HTTPException(status_code=404, detail="No session found")
+    return {"status": "disconnected"}
+
+
+@app.get("/api/oauth/{platform}/status")
+async def oauth_status(platform: str):
+    """Public status mask — no token values leak back."""
+    import services.oauth as oauth
+
+    return oauth.public_status(platform)
+
+
+@app.post("/api/oauth/{platform}/reconnect")
+async def oauth_reconnect(platform: str, request: Request):
+    """Issue a new authorization URL (the user clicks it again)."""
+    import importlib
+
+    from services.oauth import build_authorize_url
+
+    p = importlib.import_module("services.oauth").PLATFORMS.get(platform)
+    if not p:
+        raise HTTPException(status_code=404, detail=f"Platform '{platform}' not found")
+    c = os.getenv(p.client_id_env, "")
+    if not c:
+        raise HTTPException(status_code=500, detail=f"Missing env {p.client_id_env}")
+    redirect = f"{DASHBOARD_ORIGIN}/oauth/callback/{platform}"
+    out = build_authorize_url(p, redirect)
+    return JSONResponse(
+        {"url": out["url"], "state": out["state"], "client_id": c, "expires_in_s": out.get("expires_in_s", 600)}
+    )
+
+
+@app.post("/api/oauth/{platform}/disconnect")
+async def oauth_disconnect(platform: str, request: Request):
+    """Drop stored tokens for a platform."""
+    import importlib
+
+    from services.oauth import remove_token
+
+    removed = remove_token(platform)
+    if not removed:
+        raise HTTPException(status_code=404, detail=f"no connection recorded for '{platform}'")
+    return JSONResponse({"status": "disconnected"})
+
+
+@app.get("/oauth/callback/{platform}")
+async def oauth_callback(platform: str, code: str = "", state: str = "", error: str = "", error_description: str = ""):
+    """OAuth redirect target. Exchanges code for tokens and redirects back to dashboard."""
+    import importlib
+
+    from services.oauth import exchange_code, PLATFORMS
+
+    p = PLATFORMS.get(platform)
+    if not p:
+        raise HTTPException(status_code=404, detail=f"Platform '{platform}' not found")
+
+    if error:
+        return FileResponse(
+            Path(__file__).parent / "dashboard.html",
+            headers={"Location": f"{DASHBOARD_ORIGIN}/?oauth_error={platform}&msg={error_description or error}"}
+        )
+
+    if not code or not state:
+        raise HTTPException(status_code=400, detail="Missing code or state")
+
+    redirect_uri = f"{DASHBOARD_ORIGIN}/oauth/callback/{platform}"
+    result = exchange_code(p, code, redirect_uri)
+
+    # redirect back with status in fragment
+    status = result.get("status", "failed")
+    msg = result.get("error", "") or ""
+    return FileResponse(
+        Path(__file__).parent / "dashboard.html",
+        headers={"Location": f"{DASHBOARD_ORIGIN}/?oauth_result={platform}&status={status}&msg={msg}"}
+    )

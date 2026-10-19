@@ -5,6 +5,8 @@ celery==5.4.0
 redis==5.1.1
 pydantic==2.9.0
 pydantic-settings==2.5.2
+cryptography==43.0.1
+loguru==0.7.2
 
 # Scraper Dependencies
 playwright==1.48.0

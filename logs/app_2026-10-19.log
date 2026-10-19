@@ -1,0 +1,161 @@
+2026-10-19 04:43:07 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 04:43:07 | INFO  | api_server:<module>:47 - Docker client initialized
+2026-10-19 04:43:07 | INFO  | api_server:startup_event:55 - API server starting up
+2026-10-19 04:43:07 | INFO  | api_server:startup_event:56 - REDIS_URL=redis://redis:6379/0
+2026-10-19 04:43:07 | INFO  | api_server:startup_event:57 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 04:58:49 | INFO  | api_server:shutdown_event:62 - API server shutting down
+2026-10-19 04:59:03 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 04:59:03 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 04:59:03 | INFO  | api_server:startup_event:109 - API server starting up
+2026-10-19 04:59:03 | INFO  | api_server:startup_event:110 - REDIS_URL=redis://redis:6379/0
+2026-10-19 04:59:03 | INFO  | api_server:startup_event:111 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 04:59:18 | INFO  | api_server:shutdown_event:116 - API server shutting down
+2026-10-19 04:59:23 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 04:59:23 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 04:59:23 | INFO  | api_server:startup_event:109 - API server starting up
+2026-10-19 04:59:23 | INFO  | api_server:startup_event:110 - REDIS_URL=redis://redis:6379/0
+2026-10-19 04:59:23 | INFO  | api_server:startup_event:111 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 05:04:04 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 05:04:04 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 05:04:04 | INFO  | api_server:startup_event:109 - API server starting up
+2026-10-19 05:04:04 | INFO  | api_server:startup_event:110 - REDIS_URL=redis://redis:6379/0
+2026-10-19 05:04:04 | INFO  | api_server:startup_event:111 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 05:04:41 | INFO  | api_server:shutdown_event:116 - API server shutting down
+2026-10-19 05:04:46 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 05:04:46 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 05:04:46 | INFO  | api_server:startup_event:109 - API server starting up
+2026-10-19 05:04:46 | INFO  | api_server:startup_event:110 - REDIS_URL=redis://redis:6379/0
+2026-10-19 05:04:46 | INFO  | api_server:startup_event:111 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 05:18:19 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 05:18:19 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 05:18:19 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 05:18:19 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 05:18:19 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 05:18:44 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 05:18:49 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 05:18:49 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 05:18:49 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 05:18:49 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 05:18:49 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 05:29:59 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 05:29:59 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 05:29:59 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 05:29:59 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 05:29:59 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 05:47:19 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 05:47:19 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 05:47:19 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 05:47:19 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 05:47:19 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 05:53:02 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 05:53:07 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 05:53:07 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 05:53:07 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 05:53:07 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 05:53:07 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 06:49:47 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 06:50:00 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 06:50:00 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 06:50:00 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 06:50:00 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 06:50:00 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 06:50:23 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 06:50:28 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 06:50:28 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 06:50:28 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 06:50:28 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 06:50:28 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:25:22 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 08:25:35 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:25:35 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:25:35 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:25:35 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:25:35 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:28:58 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:28:58 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:28:58 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:28:58 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:28:58 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:38:47 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 08:38:49 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:38:49 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:38:49 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:38:49 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:38:49 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:39:20 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 08:39:21 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:39:21 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:39:21 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:39:21 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:39:21 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:41:19 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 08:41:35 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:41:35 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:41:35 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:41:35 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:41:35 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:42:02 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-celery_worker-1: 'system_cpu_usage'
+2026-10-19 08:42:08 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:42:08 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:42:08 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:42:08 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:42:08 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:55:31 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:55:31 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:55:31 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:55:31 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:55:31 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 08:55:59 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 08:55:59 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 08:55:59 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 08:55:59 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 08:55:59 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 09:12:05 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 09:12:07 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 09:12:07 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 09:12:07 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 09:12:07 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 09:12:07 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 09:14:27 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 09:14:29 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 09:14:29 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 09:14:29 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 09:14:29 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 09:14:29 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 09:15:36 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 09:15:38 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 09:15:38 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 09:15:38 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 09:15:38 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 09:15:38 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 09:22:26 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 09:22:31 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 09:22:31 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 09:22:31 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 09:22:31 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 09:22:31 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 09:23:29 | INFO  | api_server:shutdown_event:122 - API server shutting down
+2026-10-19 09:23:41 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 09:23:41 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 09:23:41 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 09:23:41 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 09:23:41 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 09:24:13 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:24:22 | INFO  | utils.logger:<module>:44 - Logging initialized with loguru
+2026-10-19 09:24:22 | INFO  | api_server:<module>:50 - Docker client initialized
+2026-10-19 09:24:22 | INFO  | api_server:startup_event:115 - API server starting up
+2026-10-19 09:24:22 | INFO  | api_server:startup_event:116 - REDIS_URL=redis://redis:6379/0
+2026-10-19 09:24:22 | INFO  | api_server:startup_event:117 - OLLAMA_HOST=http://ollama:11434
+2026-10-19 09:25:09 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:25:24 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:25:38 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:25:52 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:26:06 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:26:20 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:26:34 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:26:50 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:27:04 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:27:18 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:27:32 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:27:46 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
+2026-10-19 09:28:00 | WARNING | api_server:docker_metrics:217 - Failed to get stats for affiliate-automation-browser_login-1: 'system_cpu_usage'
