@@ -1,0 +1,113 @@
+# Affiliate Marketplace Live Automation Configuration
+project_name: affiliate-marketplace-automation
+version: "1.0.0"
+created: 2026-10-19
+
+# Marketplaces target scraping
+marketplaces:
+  - id: tokopedia
+    base_url: https://www.tokopedia.com
+    selectors:
+      product_card: ".css-1ha0g87"
+      product_image: ".css-87s1l0 img"
+  - id: shopee
+    base_url: https://www.shopee.co.id
+    selectors:
+      product_card: ".css-1rp17rv"
+      product_image: ".css-nspwke img"
+  - id: lazada
+    base_url: https://www.lazada.com.ph
+    selectors:
+      product_card: ".css-2ce3wi"
+      product_image: ".css-1qsinh1 img"
+
+# Platforms untuk distribution
+target_platforms:
+  - name: X
+    type: thread
+    enabled: true
+    thread_format: promo_thread
+    follow_image: true
+  - name: Facebook
+    type: grid
+    enabled: true
+    page_name: "@AyushaBusinessPage"
+    engagement_reply: true
+  - name: TikTok/Threads
+    type: carousel
+    enabled: true
+    resolution: "1080x1920"
+    aspect_ratio: "vertical"
+
+# AI Models configuration (Ollama)
+ai_models:
+  qwen:
+    enabled: true
+    model_name: qwen2.7b-coder:latest
+    base_url: http://localhost:11434/api/generate
+    max_tokens: 2048
+    temperature: 0.7
+    system_prompt: |
+      You are an expert affiliate marketer for Indonesian marketplace.
+      Generate compelling product descriptions with:
+      - Catchy hooks
+      - Benefit-driven copy
+      - Hashtags: #promo #diskon #jokerpromo #ayushafira
+      - Ensure no duplicate content
+      
+  kimi:
+    enabled: false
+    model_name: kimi2.7b:latest
+    base_url: http://localhost:11434/api/generate
+
+# Schedule & humanization
+schedule:
+  work_shifts:
+    - start: 7
+      end: 18
+    - start: 22
+      end: 7
+  
+  human_delay:
+    min_minutes: 5
+    max_minutes: 17
+  
+  job_interval_minutes: 10
+
+# Anti-banned configuration
+anti_banned:
+  link_cloaking:
+    enabled: true
+    redirect_url: https://your-landing-page.com
+    shortener_enabled: false
+  
+  spintax_templates:
+    generate_daily: true
+    diversity_score: 0.9
+    templates_path: "data/spin-templates/"
+
+# Storage & distribution
+storage:
+  github:
+    repo: ayushafira/affiliate-marketplace-automation
+    author: Ayusha Shafira
+    branch: main
+    token_env: GITHUB_TOKEN
+    commits_per_push: 5
+    
+  logs:
+    enabled: true
+    max_size_mb: 10
+    backup_enabled: true
+  
+  data:
+    schedules_path: "data/schedules/"
+    archives_path: "data/archives/"
+    images_output_path: "data/output/images/"
+
+# Development mode
+dev_mode: false
+debug: false
+
+# Enable AI integrations
+enable_ai_engine: true
