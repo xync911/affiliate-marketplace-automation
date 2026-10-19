@@ -10,16 +10,19 @@ import random
 from datetime import datetime, timedelta
 from typing import Dict, Optional
 
+import os
 from celery import Celery
 from celery.schedules import crontab
 
 logger = logging.getLogger("task_queue")
 
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+
 # Initialize Celery app
 app = Celery(
     "affiliate_automation",
-    broker="redis://localhost:6379/0",
-    backend="redis://localhost:6379/0",
+    broker=REDIS_URL,
+    backend=REDIS_URL,
 )
 
 # Configuration

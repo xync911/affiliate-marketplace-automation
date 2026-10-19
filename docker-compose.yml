@@ -1,5 +1,4 @@
-version: "3.8"
-
+# docker-compose.yml
 services:
   # Redis - Task Queue Backend
   redis:
@@ -54,16 +53,12 @@ services:
     environment:
       - OLLAMA_HOST=0.0.0.0:11434
     restart: unless-stopped
-    command: >
-      sh -c "ollama serve &
-      ollama pull qwen2.7b-coder:latest
-      ollama pull llama3.2:latest
-      sleep infinity"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
-      interval: 15s
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
       timeout: 5s
-      retries: 3
+      retries: 12
+      start_period: 30s
 
   # Celery Worker - Background Tasks
   celery_worker:
