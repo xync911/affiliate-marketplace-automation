@@ -39,8 +39,6 @@ A microservices-based automation system for affiliate marketing that:
    ```
 3. The GitHub token is already configured in the task, but you can override it in `.env`:
    ```
-   GITHUB_TOKEN=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
-   ```
 
 ### Build and Run
 ```bash
